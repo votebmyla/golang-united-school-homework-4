@@ -51,7 +51,7 @@ func StringSum(input string) (output string, err error) {
 	}
 
 	if len(num1) == 0 {
-		return "", errorNotTwoOperands
+		return "", fmt.Errorf("%w", errorNotTwoOperands)
 	}
 
 	x, errx := strconv.Atoi(num1)
