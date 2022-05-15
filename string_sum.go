@@ -2,6 +2,7 @@ package string_sum
 
 import (
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -27,7 +28,7 @@ var (
 func StringSum(input string) (output string, err error) {
 	input = strings.ReplaceAll(input, " ", "")
 	if len(input) == 0 {
-		return "", errorEmptyInput
+		return "", fmt.Errorf("%w", errorEmptyInput)
 	}
 
 	var num1, num2 string
@@ -56,7 +57,5 @@ func StringSum(input string) (output string, err error) {
 	}
 
 	output = strconv.Itoa(x + y)
-	// fmt.Println(">", x+y)
-
 	return output, nil
 }
