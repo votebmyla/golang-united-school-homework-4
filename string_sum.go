@@ -23,6 +23,5 @@ var (
 // Use the errors defined above as described, again wrapping into fmt.Errorf
 
 func StringSum(input string) (output string, err error) {
-
-	return "2 + 2", nil
+	return "", nil
 }
