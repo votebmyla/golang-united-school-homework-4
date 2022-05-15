@@ -41,7 +41,7 @@ func StringSum(input string) (output string, err error) {
 		num2 = input[lastPlus:]
 
 		if strings.Contains(num1[1:], "+") || strings.Contains(num1[1:], "-") {
-			return "", errorNotTwoOperands
+			return "", fmt.Errorf("%w", errorNotTwoOperands)
 		}
 	}
 
