@@ -2,6 +2,9 @@ package string_sum
 
 import (
 	"errors"
+	"fmt"
+	"strconv"
+	"strings"
 )
 
 //use these errors as appropriate, wrapping them with fmt.Errorf function
@@ -16,12 +19,44 @@ var (
 // For example, having an input string "3+5", it should return output string "8" and nil error
 // Consider cases, when operands are negative ("-3+5" or "-3-5") and when input string contains whitespace (" 3 + 5 ")
 //
-//For the cases, when the input expression is not valid(contains characters, that are not numbers, +, - or whitespace)
+// For the cases, when the input expression is not valid(contains characters, that are not numbers, +, - or whitespace)
 // the function should return an empty string and an appropriate error from strconv package wrapped into your own error
 // with fmt.Errorf function
 //
 // Use the errors defined above as described, again wrapping into fmt.Errorf
 
 func StringSum(input string) (output string, err error) {
+	input = strings.ReplaceAll(input, " ", "")
+	if len(input) == 0 {
+		fmt.Println(errorEmptyInput)
+		return "", errorEmptyInput
+	}
+
+	var num1, num2 string
+
+	lastPlus := strings.LastIndex(input, "+")
+	lastMinus := strings.LastIndex(input, "-")
+
+	if lastPlus > lastMinus {
+		num1 = input[:lastPlus]
+		num2 = input[lastPlus:]
+	}
+
+	if lastMinus > lastPlus {
+		num1 = input[:lastMinus]
+		num2 = input[lastMinus:]
+	}
+
+	x, errx := strconv.Atoi(num1)
+	if errx != nil {
+		fmt.Println(errx)
+	}
+
+	y, erry := strconv.Atoi(num2)
+	if erry != nil {
+		fmt.Println(errorEmptyInput)
+	}
+	fmt.Println(">", x+y)
+
 	return "", nil
 }
