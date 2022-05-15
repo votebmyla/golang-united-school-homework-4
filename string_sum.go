@@ -54,12 +54,6 @@ func StringSum(input string) (output string, err error) {
 		return "", fmt.Errorf("%w", errorNotTwoOperands)
 	}
 
-	for i := range num1 {
-		if num1[i] > 96 && num1[i] < 123 {
-			return "", errors.New("*strconv.NumError")
-		}
-	}
-
 	x, errx := strconv.Atoi(num1)
 	if errx != nil {
 		return "", errx
