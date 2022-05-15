@@ -50,6 +50,10 @@ func StringSum(input string) (output string, err error) {
 		num2 = input[lastMinus:]
 	}
 
+	if len(num1) == 0 {
+		return "", errorNotTwoOperands
+	}
+
 	x, errx := strconv.Atoi(num1)
 	if errx != nil {
 		return "", errx
