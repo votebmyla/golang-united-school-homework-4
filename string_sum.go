@@ -39,6 +39,10 @@ func StringSum(input string) (output string, err error) {
 	if lastPlus > lastMinus {
 		num1 = input[:lastPlus]
 		num2 = input[lastPlus:]
+
+		if strings.Contains(num1, "+") || strings.Contains(num1, "-") {
+			return "", errorNotTwoOperands
+		}
 	}
 
 	if lastMinus > lastPlus {
