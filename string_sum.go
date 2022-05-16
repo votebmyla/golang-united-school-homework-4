@@ -56,12 +56,12 @@ func StringSum(input string) (output string, err error) {
 
 	x, errx := strconv.Atoi(num1)
 	if errx != nil {
-		return "", errx
+		return "", fmt.Errorf("%w", errx)
 	}
 
 	y, erry := strconv.Atoi(num2)
 	if erry != nil {
-		return "", erry
+		return "", fmt.Errorf("%w", erry)
 	}
 
 	output = strconv.Itoa(x + y)
